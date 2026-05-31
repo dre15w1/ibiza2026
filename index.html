@@ -686,20 +686,29 @@ footer{background:var(--navy);padding:32px 48px;display:flex;justify-content:spa
 
 <!-- ═══ HERO ═══ -->
 <section id="video-opener">
-  <div class="video-wrapper">
-    <iframe
-      src="https://www.youtube.com/embed/Q86EpMi4vvQ?autoplay=1&mute=1&loop=1&playlist=Q86EpMi4vvQ&controls=1&rel=0&modestbranding=1&playsinline=1"
-      allow="autoplay; encrypted-media; picture-in-picture"
-      allowfullscreen
-      title="Ibiza 2026">
-    </iframe>
+  <div class="video-wrapper" id="yt-wrapper">
+    <!-- Click-to-play: opens YouTube (embedding disabled by uploader) -->
+    <a href="https://youtu.be/Q86EpMi4vvQ" target="_blank" 
+       style="display:block;position:absolute;inset:0;text-decoration:none;">
+      <img src="https://img.youtube.com/vi/Q86EpMi4vvQ/maxresdefault.jpg" 
+           onerror="this.src='https://img.youtube.com/vi/Q86EpMi4vvQ/hqdefault.jpg'"
+           alt="Ibiza 2026 video"
+           style="width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.75)"/>
+      <!-- Play button overlay -->
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px">
+        <div style="width:80px;height:80px;background:rgba(255,0,0,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(0,0,0,.5);transition:transform .2s">
+          <div style="width:0;height:0;border-top:22px solid transparent;border-bottom:22px solid transparent;border-left:36px solid white;margin-left:8px"></div>
+        </div>
+        <div style="font-family:Bebas Neue,cursive;font-size:18px;letter-spacing:3px;color:rgba(255,255,255,.8);text-transform:uppercase">Watch on YouTube</div>
+      </div>
+    </a>
     <div class="video-overlay-bottom"></div>
     <div class="video-label">
       <div class="video-label-dot"></div>
       <span class="video-label-text">Ibiza 2026</span>
     </div>
     <button class="video-skip" onclick="document.getElementById('villa-pick').scrollIntoView({behavior:'smooth'})">
-      Skip Intro ↓
+      Skip ↓
     </button>
   </div>
 </section>
