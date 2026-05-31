@@ -661,6 +661,50 @@ footer{background:var(--navy);padding:32px 48px;display:flex;justify-content:spa
   color: rgba(255,255,255,0.7);
 }
 
+
+/* ── What's Included breakdown ── */
+.included-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+}
+.included-item {
+  background: var(--cardl);
+  border-radius: 8px;
+  padding: 16px 14px;
+  text-align: center;
+  border-top: 3px solid var(--teal);
+  transition: transform .2s;
+}
+.included-item:hover { transform: translateY(-3px); }
+.included-item.gold  { border-top-color: var(--gold); }
+.included-item.purple{ border-top-color: var(--purple); }
+.included-item.coral { border-top-color: var(--coral); }
+.included-icon { font-size: 26px; margin-bottom: 8px; }
+.included-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+}
+.included-amount {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 24px; color: var(--white); letter-spacing: 1px; line-height: 1;
+}
+.included-sub { font-size: 10px; color: var(--muted); margin-top: 3px; }
+.included-note {
+  background: rgba(0,188,212,.07);
+  border: 1px solid rgba(0,188,212,.2);
+  border-left: 4px solid var(--teal);
+  border-radius: 0 6px 6px 0;
+  padding: 14px 18px;
+  font-size: 12px;
+  color: var(--off);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.included-note strong { color: var(--teal); }
+@media(max-width:900px){.included-grid{grid-template-columns:repeat(2,1fr);}}
+
 </style>
 </head>
 <body>
@@ -2249,6 +2293,20 @@ footer{background:var(--navy);padding:32px 48px;display:flex;justify-content:spa
         </div>
       </div>
       <div class="ppb-body">
+        <div class="included-note">
+          ✅ &nbsp;Your deposit covers <strong>everything below</strong> — paid once, sorted for the whole trip:
+        </div>
+        <div class="included-grid"><div class="included-item teal"><div class="included-icon">🏡</div><div class="included-label">Villa</div><div class="included-amount">$1,770</div><div class="included-sub">8 nights · 10 guests</div></div>
+<div class="included-item gold"><div class="included-icon">🍳</div><div class="included-label">Breakfast</div><div class="included-amount">$240</div><div class="included-sub">8 mornings at villa</div></div>
+<div class="included-item purple"><div class="included-icon">🥂</div><div class="included-label">Liquor</div><div class="included-amount">$180</div><div class="included-sub">Spirits, wine & mixers</div></div>
+<div class="included-item coral"><div class="included-icon">🚐</div><div class="included-label">Transport</div><div class="included-amount">$160</div><div class="included-sub">Airport + group transfers</div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.2);border-radius:6px;margin-bottom:20px">
+          <div style="font-size:12px;color:var(--off);font-weight:600">Total Group Split (all 4 items)</div>
+          <div style="font-family:'Bebas Neue',cursive;font-size:32px;color:var(--gold);letter-spacing:1px">$2,350 <span style="font-size:14px;color:var(--muted);font-family:'DM Sans',sans-serif">per person</span></div>
+        </div>
+        <div class="included-note" style="border-left-color:var(--muted);color:var(--muted);font-size:11px;margin-bottom:20px">
+          <strong>Every morning</strong> you wake up to breakfast already covered. <strong>The fridge and bar are stocked</strong> from day one. <strong>Airport transfers</strong> are handled for the group. All you bring beyond this is spending money for nights out, activities, and dining.
+        </div>
         <div class="ppb-tabs" id="tabs-a">
           <button class="ppb-tab active" onclick="setPlan('a',1)">Pay in Full</button>
           <button class="ppb-tab" onclick="setPlan('a',2)">2 Payments</button>
@@ -2276,6 +2334,20 @@ footer{background:var(--navy);padding:32px 48px;display:flex;justify-content:spa
         </div>
       </div>
       <div class="ppb-body">
+        <div class="included-note">
+          ✅ &nbsp;Your deposit covers <strong>everything below</strong> — paid once, sorted for the whole trip:
+        </div>
+        <div class="included-grid"><div class="included-item teal"><div class="included-icon">🏠</div><div class="included-label">Villa</div><div class="included-amount">$1,027</div><div class="included-sub">8 nights · 6 guests</div></div>
+<div class="included-item gold"><div class="included-icon">🍳</div><div class="included-label">Breakfast</div><div class="included-amount">$240</div><div class="included-sub">8 mornings at villa</div></div>
+<div class="included-item purple"><div class="included-icon">🥂</div><div class="included-label">Liquor</div><div class="included-amount">$180</div><div class="included-sub">Spirits, wine & mixers</div></div>
+<div class="included-item coral"><div class="included-icon">🚐</div><div class="included-label">Transport</div><div class="included-amount">$160</div><div class="included-sub">Airport + group transfers</div></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.2);border-radius:6px;margin-bottom:20px">
+          <div style="font-size:12px;color:var(--off);font-weight:600">Total Group Split (all 4 items)</div>
+          <div style="font-family:'Bebas Neue',cursive;font-size:32px;color:var(--gold);letter-spacing:1px">$1,607 <span style="font-size:14px;color:var(--muted);font-family:'DM Sans',sans-serif">per person</span></div>
+        </div>
+        <div class="included-note" style="border-left-color:var(--muted);color:var(--muted);font-size:11px;margin-bottom:20px">
+          <strong>Every morning</strong> you wake up to breakfast already covered. <strong>The fridge and bar are stocked</strong> from day one. <strong>Airport transfers</strong> are handled for the group. All you bring beyond this is spending money for nights out, activities, and dining.
+        </div>
         <div class="ppb-tabs" id="tabs-b">
           <button class="ppb-tab active" onclick="setPlan('b',1)">Pay in Full</button>
           <button class="ppb-tab" onclick="setPlan('b',2)">2 Payments</button>
