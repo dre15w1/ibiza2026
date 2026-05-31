@@ -587,6 +587,80 @@ footer{background:var(--navy);padding:32px 48px;display:flex;justify-content:spa
 .mini-card-desc { font-size:11px; color:var(--muted); line-height:1.5; }
 .mini-card-price { font-family:'Bebas Neue',cursive; font-size:22px; color:var(--gold); letter-spacing:1px; flex-shrink:0; margin-left:16px; text-align:right; }
 
+
+/* ── Video Opener ── */
+#video-opener {
+  position: relative;
+  width: 100%;
+  background: var(--black);
+  overflow: hidden;
+}
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+.video-overlay-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to top, var(--black) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+.video-skip {
+  position: absolute;
+  bottom: 28px;
+  right: 28px;
+  z-index: 10;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--off);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all .2s;
+}
+.video-skip:hover {
+  background: rgba(255,255,255,0.22);
+  color: var(--white);
+}
+.video-label {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.video-label-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 8px var(--coral);
+  animation: blink 2s ease-in-out infinite;
+}
+.video-label-text {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+}
+
 </style>
 </head>
 <body>
@@ -595,7 +669,7 @@ footer{background:var(--navy);padding:32px 48px;display:flex;justify-content:spa
 <nav id="nav">
   <div class="nav-logo">IBIZA 2026</div>
   <ul class="nav-links">
-    <li><a href="#villa-pick">Choose Villa</a></li>
+    <li><a href="#video-opener" style="color:var(--coral)">▶ Intro</a></li><li><a href="#villa-pick">Choose Villa</a></li>
     <li><a href="#agenda">Agenda</a></li>
     <li><a href="#nightlife">Nightlife</a></li><li><a href="#clubs">Clubs</a></li><li><a href="#restaurants">Eat</a></li><li><a href="#sights">Sights</a></li>
     <li><a href="#activities">Activities</a></li>
@@ -611,6 +685,26 @@ footer{background:var(--navy);padding:32px 48px;display:flex;justify-content:spa
 </nav>
 
 <!-- ═══ HERO ═══ -->
+<section id="video-opener">
+  <div class="video-wrapper">
+    <iframe
+      src="https://www.youtube.com/embed/Q86EpMi4vvQ?autoplay=1&mute=1&loop=1&playlist=Q86EpMi4vvQ&controls=1&rel=0&modestbranding=1&playsinline=1"
+      allow="autoplay; encrypted-media; picture-in-picture"
+      allowfullscreen
+      title="Ibiza 2026">
+    </iframe>
+    <div class="video-overlay-bottom"></div>
+    <div class="video-label">
+      <div class="video-label-dot"></div>
+      <span class="video-label-text">Ibiza 2026</span>
+    </div>
+    <button class="video-skip" onclick="document.getElementById('villa-pick').scrollIntoView({behavior:'smooth'})">
+      Skip Intro ↓
+    </button>
+  </div>
+</section>
+<div class="gold-line"></div>
+
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
