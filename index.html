@@ -3162,6 +3162,38 @@ selectVilla = function(v) {
 })();
 
 
+
+function snapVilla(v) {
+  // Button states
+  var btnA = document.getElementById('snap-btn-a');
+  var btnB = document.getElementById('snap-btn-b');
+  if (btnA) { btnA.classList.toggle('active', v === 'a'); }
+  if (btnB) {
+    btnB.classList.toggle('active', v === 'b');
+    btnB.classList.toggle('b', true); // keep b class always
+  }
+
+  // Update amounts
+  var snapVillaEl = document.getElementById('snap-villa');
+  var snapTotal   = document.getElementById('snap-total');
+  var snapSub     = document.getElementById('snap-sub');
+  var snapIcon    = document.querySelector('.cost-card:first-child .cost-icon');
+
+  if (v === 'b') {
+    if (snapVillaEl) snapVillaEl.textContent = '$1,027';
+    if (snapTotal)   { snapTotal.textContent = '$1,607'; snapTotal.style.color = 'var(--green)'; }
+    if (snapSub)     snapSub.textContent = '6 people · save $743 vs Villa A';
+    if (snapIcon)    snapIcon.textContent = '🏠';
+  } else {
+    if (snapVillaEl) snapVillaEl.textContent = '$1,770';
+    if (snapTotal)   { snapTotal.textContent = '$2,350'; snapTotal.style.color = 'var(--gold)'; }
+    if (snapSub)     snapSub.textContent = '10 people · pay once';
+    if (snapIcon)    snapIcon.textContent = '🏡';
+  }
+  // Sync villa picker and budget section
+  if (typeof selectVilla === 'function') selectVilla(v);
+}
+
 </script>
 
 <div id="music-player">
