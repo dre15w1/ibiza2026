@@ -868,6 +868,72 @@ footer{background:var(--navy);padding:32px 48px;display:flex;justify-content:spa
   #spotify-frame-wrap { width: calc(100vw - 32px); }
 }
 
+
+/* ── Cost Snapshot Bar ── */
+#cost-snap {
+  background: var(--navy);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 0;
+}
+.cost-snap-inner {
+  max-width: 1240px; margin: 0 auto; padding: 0 48px;
+}
+.cost-snap-top {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 28px; flex-wrap: wrap; gap: 12px;
+}
+.cost-snap-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 32px; color: var(--white); letter-spacing: 1px;
+}
+.cost-snap-toggle {
+  display: flex; gap: 0;
+  background: var(--card); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+}
+.cost-snap-btn {
+  padding: 9px 22px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; background: none; border: none; color: var(--muted);
+  cursor: pointer; transition: all .2s;
+}
+.cost-snap-btn.active { background: var(--teal); color: #030810; }
+.cost-snap-btn.active.b { background: var(--gold); }
+.cost-cards {
+  display: grid; grid-template-columns: repeat(4, 1fr) 1.2fr; gap: 10px;
+  margin-bottom: 18px;
+}
+.cost-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 18px 16px; text-align: center;
+}
+.cost-card.total-card {
+  background: linear-gradient(135deg, rgba(255,215,0,.08) 0%, rgba(0,188,212,.06) 100%);
+  border-color: rgba(255,215,0,.3); border-radius: 8px;
+}
+.cost-icon { font-size: 22px; margin-bottom: 6px; }
+.cost-label {
+  font-size: 9px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
+}
+.cost-amount {
+  font-family: 'Bebas Neue', cursive; font-size: 28px;
+  color: var(--teal); letter-spacing: 1px; line-height: 1;
+  transition: all .3s;
+}
+.cost-card.total-card .cost-amount { font-size: 36px; color: var(--gold); }
+.cost-sub { font-size: 10px; color: var(--muted); margin-top: 4px; }
+.cost-note {
+  text-align: center; font-size: 12px; color: var(--muted); line-height: 1.6;
+}
+.cost-note a {
+  color: var(--teal); font-weight: 600; text-decoration: none;
+  border-bottom: 1px solid rgba(0,188,212,.3);
+}
+.cost-note a:hover { color: var(--teal2); }
+@media(max-width:900px){
+  .cost-cards { grid-template-columns: repeat(2,1fr); }
+  .cost-snap-inner { padding: 0 24px; }
+}
+
 </style>
 </head>
 <body>
@@ -938,6 +1004,60 @@ footer{background:var(--navy);padding:32px 48px;display:flex;justify-content:spa
   <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
 <div class="gold-line"></div>
+
+<section id="cost-snap">
+  <div class="cost-snap-inner">
+    <div class="cost-snap-top">
+      <div>
+        <div class="cost-snap-title">What Does It Cost?</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px">Group split per person — everything included upfront</div>
+      </div>
+      <div class="cost-snap-toggle">
+        <button class="cost-snap-btn active" id="snap-btn-a" onclick="snapVilla('a')">🏡 Villa A · 10 People</button>
+        <button class="cost-snap-btn b" id="snap-btn-b" onclick="snapVilla('b')">🏠 Villa B · 6 People</button>
+      </div>
+    </div>
+    <div class="cost-cards">
+      <div class="cost-card">
+        <div class="cost-icon">🏡</div>
+        <div class="cost-label">Villa</div>
+        <div class="cost-amount" id="snap-villa">$1,770</div>
+        <div class="cost-sub">8 nights</div>
+      </div>
+      <div class="cost-card">
+        <div class="cost-icon">🍳</div>
+        <div class="cost-label">Breakfast</div>
+        <div class="cost-amount" style="color:var(--gold)">$240</div>
+        <div class="cost-sub">8 mornings</div>
+      </div>
+      <div class="cost-card">
+        <div class="cost-icon">🥂</div>
+        <div class="cost-label">Liquor</div>
+        <div class="cost-amount" style="color:var(--purple)">$180</div>
+        <div class="cost-sub">Stocked bar</div>
+      </div>
+      <div class="cost-card">
+        <div class="cost-icon">🚐</div>
+        <div class="cost-label">Transport</div>
+        <div class="cost-amount" style="color:var(--coral)">$160</div>
+        <div class="cost-sub">Airport + transfers</div>
+      </div>
+      <div class="cost-card total-card">
+        <div class="cost-icon">💰</div>
+        <div class="cost-label">Total Group Split</div>
+        <div class="cost-amount" id="snap-total">$2,350</div>
+        <div class="cost-sub" id="snap-sub">per person · pay once</div>
+      </div>
+    </div>
+    <div class="cost-note">
+      Personal spending (nightlife, dining, activities) is separate — budget an extra <strong style="color:var(--off)">~$800–1,200</strong>.
+      &nbsp;·&nbsp; <a href="#payment">See payment plans ↓</a>
+      &nbsp;·&nbsp; <a href="#dyn-budget">Full budget breakdown ↓</a>
+    </div>
+  </div>
+</section>
+<div class="gold-line"></div>
+
 
 <!-- ═══ VILLA ═══ -->
 
