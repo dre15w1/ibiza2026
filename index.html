@@ -2669,7 +2669,7 @@ footer{background:var(--navy);padding:32px 48px;display:flex;justify-content:spa
           <button class="ppb-tab" onclick="setPlan('a',3)">3 Payments</button>
         </div>
         <div class="ppb-schedule" id="sched-a"></div>
-        <a href="https://www.paypal.com/biz/profile/dre15w1?amount=2350&currencyCode=USD&note=Ibiza+2026+Villa+A+Full+Payment"
+        <a href="https://paypal.me/dre15w1/2350"
            id="btn-a" target="_blank" class="ppb-pay-btn a">Pay Now via PayPal →</a>
         <div class="ppb-deadline">⚠️ All payments due by <strong>July 9, 2026</strong> — one week before Airbnb cancel deadline</div>
       </div>
@@ -2710,7 +2710,7 @@ footer{background:var(--navy);padding:32px 48px;display:flex;justify-content:spa
           <button class="ppb-tab" onclick="setPlan('b',3)">3 Payments</button>
         </div>
         <div class="ppb-schedule" id="sched-b"></div>
-        <a href="https://www.paypal.com/biz/profile/dre15w1?amount=1607&currencyCode=USD&note=Ibiza+2026+Villa+B+Full+Payment"
+        <a href="https://paypal.me/dre15w1/1607"
            id="btn-b" target="_blank" class="ppb-pay-btn b">Pay Now via PayPal →</a>
         <div class="ppb-deadline">⚠️ All payments due by <strong>July 9, 2026</strong> — one week before Airbnb cancel deadline</div>
       </div>
@@ -3015,7 +3015,7 @@ document.addEventListener('DOMContentLoaded', function() { updateBudget(); });
 
 // ── Dual payment plans ─────────────────────────────────────────────────
 var PLAN_TOTALS = { a: 2350, b: 1607 };
-var PAYPAL_BASE = 'https://www.paypal.com/biz/profile/dre15w1';
+var PAYPAL_BASE = 'https://paypal.me/dre15w1';
 
 function schedItems(total, numPay) {
   if (numPay === 1) {
@@ -3067,8 +3067,7 @@ function setPlan(villa, numPay) {
   var firstAmt = items[0].amt;
   var noteMap  = { 1:'Full+Payment', 2:'Deposit+(1+of+2)', 3:'First+Payment+(1+of+3)' };
   var villaTag = villa === 'a' ? 'Villa+A' : 'Villa+B';
-  btnEl.href = PAYPAL_BASE + '?amount=' + firstAmt +
-    '&currencyCode=USD&note=Ibiza+2026+' + villaTag + '+' + noteMap[numPay];
+  btnEl.href = PAYPAL_BASE + '/' + firstAmt;
 
   if (numPay === 1) {
     btnEl.textContent = 'Pay $' + firstAmt.toLocaleString() + ' in Full via PayPal →';
