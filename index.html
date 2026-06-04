@@ -771,101 +771,7 @@ footer{background:var(--navy);padding:32px 48px;display:flex;justify-content:spa
 }
 
 
-/* ── Floating Music Player ── */
-#music-player {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-}
-.music-pill {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(8,15,29,0.92);
-  border: 1px solid rgba(30,215,96,0.35);
-  border-radius: 28px;
-  padding: 9px 16px 9px 12px;
-  backdrop-filter: blur(20px);
-  cursor: pointer;
-  transition: all .25s;
-  box-shadow: 0 8px 32px rgba(0,0,0,.5);
-}
-.music-pill:hover {
-  border-color: rgba(30,215,96,.7);
-  box-shadow: 0 8px 32px rgba(30,215,96,.15);
-  transform: translateY(-2px);
-}
-.music-pill .spotify-icon {
-  width: 22px; height: 22px;
-  flex-shrink: 0;
-}
-.music-pill .mp-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 16px;
-  flex-shrink: 0;
-}
-.music-pill .mp-bars span {
-  display: block;
-  width: 3px;
-  background: #1ED760;
-  border-radius: 2px;
-  animation: none;
-}
-.music-pill.playing .mp-bars span { animation: eq 0.8s ease-in-out infinite alternate; }
-.music-pill.playing .mp-bars span:nth-child(1) { animation-delay: 0s;    height: 6px; }
-.music-pill.playing .mp-bars span:nth-child(2) { animation-delay: .15s;  height: 10px; }
-.music-pill.playing .mp-bars span:nth-child(3) { animation-delay: .3s;   height: 14px; }
-.music-pill.playing .mp-bars span:nth-child(4) { animation-delay: .1s;   height: 8px; }
-.music-pill.not-playing .mp-bars span { height: 4px; animation: none; }
-@keyframes eq {
-  0%   { transform: scaleY(0.4); }
-  100% { transform: scaleY(1); }
-}
-.music-pill .mp-label {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.8);
-  white-space: nowrap;
-}
-.music-pill .mp-tap {
-  font-size: 9px;
-  letter-spacing: 1px;
-  color: rgba(30,215,96,0.8);
-  font-weight: 500;
-}
-/* The hidden Spotify iframe */
-#spotify-frame-wrap {
-  width: 320px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 16px 48px rgba(0,0,0,.6);
-  transform: translateY(20px) scale(0.95);
-  opacity: 0;
-  pointer-events: none;
-  transition: all .3s cubic-bezier(.175,.885,.32,1.275);
-}
-#spotify-frame-wrap.visible {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-  pointer-events: all;
-}
-#spotify-frame-wrap iframe {
-  display: block;
-  border: none;
-  border-radius: 12px;
-}
-@media(max-width:480px){
-  #music-player { bottom:20px; right:16px; }
-  #spotify-frame-wrap { width: calc(100vw - 32px); }
+#spotify-frame-wrap { width: calc(100vw - 32px); }
 }
 
 
@@ -3282,34 +3188,6 @@ function snapVilla(v) {
 
 </script>
 
-<div id="music-player">
-  <!-- Spotify embed (hidden until opened) -->
-  <div id="spotify-frame-wrap">
-    <iframe
-      id="spotify-frame"
-      src="" data-src="https://open.spotify.com/embed/track/75uAivmbuGRHrOaerbrg9y?utm_source=generator&theme=0"
-      width="100%"
-      height="152"
-      frameborder="0"
-      allowfullscreen=""
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy">
-    </iframe>
-  </div>
-  <!-- Floating pill button -->
-  <div class="music-pill not-playing" id="music-pill" onclick="togglePlayer()">
-    <svg class="spotify-icon" viewBox="0 0 24 24" fill="#1ED760">
-      <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
-    </svg>
-    <div class="mp-bars">
-      <span></span><span></span><span></span><span></span>
-    </div>
-    <div>
-      <div class="mp-label" id="mp-label">Music</div>
-      <div class="mp-tap" id="mp-tap">Tap to play ♫</div>
-    </div>
-  </div>
-</div>
 
 
 <div id="chat-widget">
