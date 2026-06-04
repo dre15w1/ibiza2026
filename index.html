@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <meta name="referrer" content="no-referrer"/>
-<title>IBIZA 2026 — Group Trip</title>
+<title>Andre's Ibiza 2026 — Group Trip</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -934,16 +934,93 @@ footer{background:var(--navy);padding:32px 48px;display:flex;justify-content:spa
   .cost-snap-inner { padding: 0 24px; }
 }
 
+
+/* ── Trip Chatbot ── */
+#chat-widget {
+  position: fixed; bottom: 28px; left: 28px;
+  z-index: 1000; display: flex; flex-direction: column; align-items: flex-start;
+}
+.chat-bubble-btn {
+  width: 54px; height: 54px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal), #0077a8);
+  border: none; cursor: pointer; display: flex; align-items: center;
+  justify-content: center; font-size: 22px;
+  box-shadow: 0 4px 20px rgba(0,188,212,.4);
+  transition: transform .2s, box-shadow .2s;
+}
+.chat-bubble-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(0,188,212,.55); }
+.chat-unread {
+  position: absolute; top: -4px; right: -4px;
+  background: var(--coral); color: #fff; border-radius: 50%;
+  width: 18px; height: 18px; font-size: 10px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.chat-panel {
+  position: absolute; bottom: 64px; left: 0;
+  width: 320px; background: var(--card);
+  border: 1px solid var(--border); border-radius: 16px;
+  overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.6);
+  display: none; flex-direction: column;
+  max-height: 480px;
+}
+.chat-panel.open { display: flex; }
+.chat-header {
+  background: linear-gradient(135deg, var(--teal), #0077a8);
+  padding: 14px 18px; display: flex; align-items: center;
+  gap: 10px; flex-shrink: 0;
+}
+.chat-header-icon { font-size: 20px; }
+.chat-header-title { font-weight: 700; font-size: 14px; color: #fff; }
+.chat-header-sub { font-size: 10px; color: rgba(255,255,255,.75); }
+.chat-close {
+  margin-left: auto; background: none; border: none;
+  color: rgba(255,255,255,.7); font-size: 18px; cursor: pointer; padding: 0 4px;
+}
+.chat-messages {
+  flex: 1; overflow-y: auto; padding: 16px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.chat-msg { max-width: 85%; padding: 10px 13px; border-radius: 12px; font-size: 13px; line-height: 1.5; }
+.chat-msg.bot { background: var(--cardl); color: var(--off); border-bottom-left-radius: 4px; align-self: flex-start; }
+.chat-msg.user { background: var(--teal); color: #030810; font-weight: 500; border-bottom-right-radius: 4px; align-self: flex-end; }
+.chat-suggestions {
+  padding: 0 16px 12px; display: flex; flex-wrap: wrap; gap: 6px; flex-shrink: 0;
+}
+.chat-pill {
+  background: var(--cardl); border: 1px solid var(--border);
+  border-radius: 14px; padding: 5px 12px; font-size: 11px;
+  color: var(--teal); cursor: pointer; transition: all .2s; white-space: nowrap;
+}
+.chat-pill:hover { background: var(--teal); color: #030810; border-color: var(--teal); }
+.chat-input-row {
+  display: flex; gap: 8px; padding: 12px 14px;
+  border-top: 1px solid var(--border); flex-shrink: 0;
+}
+.chat-input {
+  flex: 1; background: var(--cardl); border: 1px solid var(--border);
+  border-radius: 20px; padding: 8px 14px; font-size: 12px;
+  color: var(--white); outline: none;
+}
+.chat-input::placeholder { color: var(--muted); }
+.chat-input:focus { border-color: var(--teal); }
+.chat-send {
+  background: var(--teal); border: none; border-radius: 50%;
+  width: 34px; height: 34px; cursor: pointer; font-size: 14px;
+  color: #030810; font-weight: 700; flex-shrink: 0; transition: background .2s;
+}
+.chat-send:hover { background: var(--teal2); }
+@media(max-width:400px){ .chat-panel { width: calc(100vw - 40px); } }
+
 </style>
   <meta property="og:title" content="Andre's Ibiza 2026 — Group Trip"/>
   <meta property="og:description" content="Aug 15–23 · Saltwater pool villa · #1, #2 &amp; #3 clubs in the world · From $1,607/pp"/>
-  <meta property="og:image" content="https://dre15w1.github.io/ibiza2026/preview.jpg"/>
+  <meta property="og:image" content="https://dre15w1.github.io/ibiza2026/preview.jpg?v=4"/>
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
   <meta property="og:url" content="https://dre15w1.github.io/ibiza2026/"/>
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:image" content="https://dre15w1.github.io/ibiza2026/preview.jpg"/>
+  <meta name="twitter:image" content="https://dre15w1.github.io/ibiza2026/preview.jpg?v=4"/>
 </head>
 <body>
 
@@ -3231,6 +3308,40 @@ function snapVilla(v) {
       <div class="mp-label" id="mp-label">Music</div>
       <div class="mp-tap" id="mp-tap">Tap to play ♫</div>
     </div>
+  </div>
+</div>
+
+
+<div id="chat-widget">
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-header">
+      <span class="chat-header-icon">🏝</span>
+      <div>
+        <div class="chat-header-title">Trip Assistant</div>
+        <div class="chat-header-sub">Ask anything about Ibiza 2026</div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-messages" id="chat-msgs">
+      <div class="chat-msg bot">Hey! 👋 I know everything about Andre's Ibiza trip. Ask me about costs, the villa, clubs, what's included — anything.</div>
+    </div>
+    <div class="chat-suggestions" id="chat-suggest">
+      <span class="chat-pill" onclick="askQ('How much does it cost?')">💰 Costs</span>
+      <span class="chat-pill" onclick="askQ('What\'s included in the deposit?')">📋 What\'s included</span>
+      <span class="chat-pill" onclick="askQ('Tell me about the villa')">🏡 The villa</span>
+      <span class="chat-pill" onclick="askQ('Which clubs are we going to?')">🎧 Clubs</span>
+      <span class="chat-pill" onclick="askQ('How do I pay?')">💳 How to pay</span>
+      <span class="chat-pill" onclick="askQ('When is the trip?')">📅 Dates</span>
+    </div>
+    <div class="chat-input-row">
+      <input class="chat-input" id="chat-input" placeholder="Ask a question..." 
+             onkeydown="if(event.key==='Enter')sendChat()"/>
+      <button class="chat-send" onclick="sendChat()">↑</button>
+    </div>
+  </div>
+  <div style="position:relative">
+    <button class="chat-bubble-btn" onclick="toggleChat()">🏝</button>
+    <div class="chat-unread" id="chat-unread">1</div>
   </div>
 </div>
 
