@@ -3186,6 +3186,81 @@ function snapVilla(v) {
   if (typeof selectVilla === 'function') selectVilla(v);
 }
 
+
+// ── Trip Chatbot ──────────────────────────────────────────────────────────────
+var _chatOpen = false;
+
+function toggleChat() {
+  _chatOpen = !_chatOpen;
+  var panel = document.getElementById('chat-panel');
+  if (panel) panel.classList.toggle('open', _chatOpen);
+  var unread = document.getElementById('chat-unread');
+  if (unread) unread.style.display = 'none';
+}
+
+function askQ(q) {
+  var input = document.getElementById('chat-input');
+  if (input) input.value = q;
+  sendChat();
+}
+
+function addMsg(text, type) {
+  var msgs = document.getElementById('chat-msgs');
+  if (!msgs) return;
+  var div = document.createElement('div');
+  div.className = 'chat-msg ' + type;
+  div.innerHTML = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function getAnswer(q) {
+  q = q.toLowerCase().trim();
+  if (/cost|price|how much|budget|spend|money/.test(q)) {
+    if (/villa b|cheaper|6 people/.test(q))
+      return '🏠 <strong>Villa B</strong> — $1,607/pp<br>Villa $1,027 + Breakfast $240 + Liquor $180 + Transport $160<br><br>Budget extra ~$800–1,200 for personal spending.';
+    return '💰 <strong>Villa A</strong>: $2,350/pp &nbsp;|&nbsp; <strong>Villa B</strong>: $1,607/pp<br><br>Both include: villa, breakfast, stocked bar, airport transfers.<br>Clubs/dining/activities = personal spend (~$800–1,200 extra).';
+  }
+  if (/includ|cover|what do i get|deposit pay/.test(q))
+    return '✅ Your deposit covers:<br>🏡 Villa (8 nights) · 🍳 Breakfast (every morning) · 🥂 Liquor package · 🚐 Airport transfers<br><br>Everything else is personal spending.';
+  if (/villa|house|pool|bedroom|stay/.test(q)) {
+    if (/b|brise|small|6/.test(q))
+      return '🏠 <strong>La Brise</strong> — Es Cubells<br>3 bed · 2 bath · 6 guests · Private pool · ★4.76<br>~$6,160 total → $1,027/pp';
+    return '🏡 <strong>Saltwater Pool Villa</strong> — Santa Eularia<br>5 bed · 5.5 bath · 10 guests · Saltwater pool · ★4.92<br>$17,701 total → $1,770/pp';
+  }
+  if (/when|date|august|how long|nights/.test(q))
+    return '📅 <strong>Aug 15–23, 2026</strong><br>8 nights · Check-in 4PM Sat · Check-out 10AM Sun';
+  if (/club|night|party|music|dj|ushuaia|hi ibiza|dc10|amnesia/.test(q))
+    return '🎧 4 of the top 8 clubs in the world:<br><strong>#1 UNVRS · #2 Hï Ibiza</strong> (Black Coffee Sat) · <strong>#3 Ushuaïa</strong> (Fri) · <strong>#8 DC10</strong> (Circoloco Mon)<br><br>Deep House + Hip Hop plans — toggle in Schedule.';
+  if (/pay|payment|paypal|deposit|instalment|plan/.test(q))
+    return '💳 3 options: Full now · 2 payments · 3 payments<br>⚠️ All due by <strong>July 9, 2026</strong><br>Pay via PayPal — scroll to Payment section.';
+  if (/deadline|cancel|refund|july/.test(q))
+    return '⚠️ <strong>July 9, 2026</strong> — all payments due.<br>Airbnb cancellation closes July 16 — we collect a week early.';
+  if (/airport|fly|flight|travel|arrive/.test(q))
+    return '✈️ Fly into <strong>Ibiza Airport (IBZ)</strong><br>Arrive Aug 15 · Airport transfer included in deposit.';
+  if (/beach|rooftop|day|salinas|blue marlin|nikki/.test(q))
+    return '🏖 Beach clubs: Nikki Beach (5 min from villa!) · Blue Marlin · O Beach · Tropicana · CBbC<br><br>🏙 Rooftops: Up Ibiza Sky Society · The Ninth · Radio ME Ibiza';
+  if (/food|eat|restaurant|breakfast|dinner/.test(q))
+    return '🍳 Breakfast included daily at villa.<br>Top restaurants: Heart Ibiza · Amante · Nobu · STK · El Chiringuito<br>💡 Cook 3–4 BBQ dinners at villa = save ~$230/pp';
+  if (/who|contact|andre|organis/.test(q))
+    return '👤 Trip organised by <strong>Andre</strong>.<br>Pay via PayPal in the Payment section, or message Andre directly.';
+  if (/sight|visit|see|do|formentera|dalt vila|es vedra/.test(q))
+    return '🗺 Must-see:<br>🏰 Dalt Vila · 🪨 Es Vedrà · ⛵ Formentera (day trip) · 🌅 Cala d'Hort · 🦩 Ses Salines · 🌸 Las Dalias market (Sat)';
+  return 'Good question! Try asking about: <strong>costs, the villa, clubs, what\'s included, how to pay, or dates</strong>.';
+}
+
+function sendChat() {
+  var input = document.getElementById('chat-input');
+  if (!input) return;
+  var q = input.value.trim();
+  if (!q) return;
+  input.value = '';
+  var suggest = document.getElementById('chat-suggest');
+  if (suggest) suggest.style.display = 'none';
+  addMsg(q, 'user');
+  setTimeout(function() { addMsg(getAnswer(q), 'bot'); }, 350);
+}
+
 </script>
 
 
